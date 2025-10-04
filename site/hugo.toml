@@ -1,7 +1,7 @@
 baseURL = 'https://example.org/'
 languageCode = 'en-us'
 title = 'Tatarlib'
-publishDir = "../public"
+publishDir = "public"
 
 theme = "ananke"
 
