@@ -1,4 +1,4 @@
-baseURL = 'https://example.org/'
+baseURL = "https://gross2001.github.io/tatlib/"
 languageCode = 'en-us'
 title = 'Tatarlib'
 publishDir = "public"
