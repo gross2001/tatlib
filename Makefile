@@ -19,7 +19,7 @@ HUGO_VERSION = 0.150.1
 HUGO_URL = https://github.com/gohugoio/hugo/releases/download/v$(HUGO_VERSION)/hugo_extended_$(HUGO_VERSION)_linux-amd64.tar.gz
 HUGO_BIN = ./bin/hugo
 SITE_DIR = ./site
-PUBLIC_DIR = ../public
+PUBLIC_DIR = ./site/public
 SITE_DIR = ./site
 BOOKS_CONTENT = $(SITE_DIR)/content/books
 
