@@ -1,4 +1,47 @@
+{{ define "head_extra" }}
+  {{ with .Params.json_ld }}
+  <script type="application/ld+json">
+  {{ . | safeHTML }}
+  </script>
+  {{ end }}
+{{ end }}
+
+
 {{ define "main" }}
-<h1>{{ .Title }}</h1>
-<div>{{ .Content }}</div>
+<article class="book">
+  <h1>{{ .Title }}</h1>
+
+  {{ with .Params.authors }}
+    <p><strong>Автор:</strong> {{ . }}</p>
+  {{ end }}
+
+  {{ with .Params.publisher }}
+    <p><strong>Издательство:</strong> {{ . }}</p>
+  {{ end }}
+
+  {{ with .Params.isbn }}
+    <p><strong>ISBN:</strong> {{ . }}</p>
+  {{ end }}
+
+  {{ with .Params.publish_date }}
+    <p><strong>Год публикации:</strong> {{ . }}</p>
+  {{ end }}
+
+  {{ with .Params.genre }}
+    <p><strong>Жанр:</strong> {{ . }}</p>
+  {{ end }}
+
+  {{ with .Params.page_count }}
+    <p><strong>Страниц:</strong> {{ . }}</p>
+  {{ end }}
+
+  {{ with .Params.download_link }}
+    <p><a href="{{ . }}" target="_blank">Скачать книгу</a></p>
+  {{ end }}
+
+  <div class="content">
+    {{ .Content }}
+  </div>
+
+</article>
 {{ end }}

@@ -20,6 +20,8 @@ HUGO_URL = https://github.com/gohugoio/hugo/releases/download/v$(HUGO_VERSION)/h
 HUGO_BIN = ./bin/hugo
 SITE_DIR = ./site
 PUBLIC_DIR = ../public
+SITE_DIR = ./site
+BOOKS_CONTENT = $(SITE_DIR)/content/books
 
 # Установка Hugo локально
 $(HUGO_BIN):
@@ -44,9 +46,16 @@ serve: $(HUGO_BIN)
 build: $(HUGO_BIN)
 	$(HUGO_BIN) -s $(SITE_DIR) --destination $(PUBLIC_DIR)
 
-# Очистка
-clean:
-	rm -rf bin $(PUBLIC_DIR)
-
-# Обновление Hugo вручную (передёргиваем)
+# Обновление Hugo вручную
 update: clean $(HUGO_BIN)
+
+
+
+
+generate-books:
+	python3 scripts/generate_books.py
+
+
+# Очистка сгенерированных файлов
+clean:
+	rm -rf ./public $(BOOKS_CONTENT)/*

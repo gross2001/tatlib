@@ -1,0 +1,5 @@
+{{ with .Params.json_ld }}
+<script type="application/ld+json">
+{{ . | safeHTML }}
+</script>
+{{ end }}
