@@ -1,35 +1,21 @@
-
-
-startProject:
-	docker compose run --rm hugo new site /src --force
-
-
-start:
-	docker compose up
-
-generateHTML:
-	docker compose run --rm hugo --destination /src/public
-
-
-
-
-
-
+OS = linux-amd64 # доступные OS можно посмотреть здесь https://github.com/gohugoio/hugo/releases
 HUGO_VERSION = 0.150.1
-HUGO_URL = https://github.com/gohugoio/hugo/releases/download/v$(HUGO_VERSION)/hugo_extended_$(HUGO_VERSION)_linux-amd64.tar.gz
+HUGO_URL = https://github.com/gohugoio/hugo/releases/download/v$(HUGO_VERSION)/hugo_extended_$(HUGO_VERSION)_$(OS).tar.gz
 HUGO_BIN = ./bin/hugo
 SITE_DIR = ./site
 PUBLIC_DIR = ./site/public
-SITE_DIR = ./site
 BOOKS_CONTENT = $(SITE_DIR)/content/books
 
-# Установка Hugo локально
+# Для создания md-файлов
+generate-books:
+	python3 scripts/generate_books.py
+
+# Установка Hugo локально (скачивается бинарник в папку bin)
 $(HUGO_BIN):
 	mkdir -p bin
 	curl -L $(HUGO_URL) | tar -xz -C bin hugo
 
-
-# Инициализация нового проекта Hugo
+# Инициализация нового проекта Hugo (не нужно больше использовать)
 init: $(HUGO_BIN)
 	test -d $(SITE_DIR) || ( \
 		$(HUGO_BIN) new site $(SITE_DIR); \
@@ -37,24 +23,9 @@ init: $(HUGO_BIN)
 	)
 	@echo "✅ Hugo site создан в $(SITE_DIR)/"
 
-
 # Запуск сервера для разработки
 serve: $(HUGO_BIN)
-	$(HUGO_BIN) server -s $(SITE_DIR) -D
-
-# Сборка сайта
-build: $(HUGO_BIN)
-	$(HUGO_BIN) -s $(SITE_DIR) --destination $(PUBLIC_DIR)
-
-# Обновление Hugo вручную
-update: clean $(HUGO_BIN)
-
-
-
-
-generate-books:
-	python3 scripts/generate_books.py
-
+	$(HUGO_BIN) server -s $(SITE_DIR) -D -O
 
 # Очистка сгенерированных файлов
 clean:
