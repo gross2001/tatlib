@@ -1,0 +1,7 @@
+# Generated Markdown files (если не хочешь хранить их в git)
+site/content/books/*.md
+
+# Hugo build output
+site/public/
+
+bin/
