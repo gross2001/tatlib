@@ -23,8 +23,12 @@ init: $(HUGO_BIN)
 	)
 	@echo "✅ Hugo site создан в $(SITE_DIR)/"
 
+# Инициализация git submodules (нужно для подключаемой темы оформления)
+submodules:
+	git submodule update --init --recursive
+
 # Запуск сервера для разработки
-serve: $(HUGO_BIN)
+serve: submodules $(HUGO_BIN)
 	$(HUGO_BIN) server -s $(SITE_DIR) -D -O
 
 # Очистка сгенерированных файлов
