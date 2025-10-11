@@ -7,3 +7,5 @@ theme = "ananke"
 
 [taxonomies]
     author = 'authors'
+    genre = 'genres'
+    publisher = 'publisher'

@@ -35,14 +35,18 @@ with CSV_PATH.open(encoding="utf-8") as f:
         slug_safe = slug_safe[:30]
         md_path = OUTPUT_DIR / f"{slug_safe}.md"
 
+         # Разбиваем жанры по запятой
+        genres_raw = row.get("genre", "")
+        genres = [g.strip() for g in genres_raw.split(",") if g.strip()]
+
         # Формируем front matter
         front_matter_dict = {
             "title": title,
             "authors": row.get("author", "").strip()[:50],
-            "publisher": row.get("publisher", "").strip(),
+            "publisher": row.get("publisher", "").strip()[:50],
             "isbn": row.get("isbn", "").strip(),
             "publish_date": row.get("publish_date", "").strip(),
-            "genre": row.get("genre", "").strip(),
+            "genres": genres, 
             "page_count": row.get("page_count", "").strip(),
             "download_link": row.get("ya_public_url", "").strip(),
             "json_ld": row.get("metadata_json", "").strip(),

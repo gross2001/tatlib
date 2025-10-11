@@ -1,13 +1,24 @@
 {{ define "main" }}
-<div class="container my-5">
-  <h1 class="text-3xl font-bold mb-4">Tatarlib — Татар китапханәсе</h1>
+<div class="container my-8">
+  <h1 class="text-3xl font-bold mb-6">Tatarlib — Татар китапханәсе</h1>
 
-  <p class="mb-4">
-    Tatarlib — татар китапларын җыючы онлайн китапханә. Монда сез төрле авторларның әсәрләрен таба аласыз.
+  <p class="mb-8 text-lg">
+    Татар китапларын табыгыз, укыгыз һәм авторларны өйрәнегез.
   </p>
 
-  <a href="{{ "authors" | relURL }}" class="btn btn-primary">
-    Авторлар исемлеге
-  </a>
+  <div class="space-y-4">
+    <!-- 🔹 Ссылка на авторов -->
+    <a href="{{ "authors" | relURL }}" style="display:block; text-decoration: underline; color: blue; margin-bottom: 10px;">
+        Авторлар исемлеге
+    </a>
+
+    <a href="{{ "genres" | relURL }}" style="display:block; text-decoration: underline; color: blue; margin-bottom: 10px;">
+        Барлык жанрларны карау
+    </a>
+
+    <a href="{{ "publisher" | relURL }}" style="display:block; text-decoration: underline; color: blue;">
+        Нәшриятләр
+    </a>
+  </div>
 </div>
 {{ end }}
