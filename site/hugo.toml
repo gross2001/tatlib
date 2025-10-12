@@ -9,3 +9,4 @@ theme = "ananke"
     author = 'authors'
     genre = 'genres'
     publisher = 'publisher'
+    language = 'language'

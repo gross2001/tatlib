@@ -49,6 +49,7 @@ with CSV_PATH.open(encoding="utf-8") as f:
             "genres": genres, 
             "page_count": row.get("page_count", "").strip(),
             "download_link": row.get("ya_public_url", "").strip(),
+            "language": row.get("language", "").strip(),
             "json_ld": row.get("metadata_json", "").strip(),
             "draft": False,
         }

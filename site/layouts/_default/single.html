@@ -31,6 +31,10 @@
     <p><strong>Жанр:</strong> {{ . }}</p>
   {{ end }}
 
+  {{ with .Params.language }}
+    <p><strong>Имлә:</strong> {{ . }}</p>
+  {{ end }}
+
   {{ with .Params.page_count }}
     <p><strong>Битләр саны:</strong> {{ . }}</p>
   {{ end }}
