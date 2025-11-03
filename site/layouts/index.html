@@ -6,6 +6,11 @@
     Татар китапларын табыгыз, укыгыз һәм авторларны өйрәнегез.
   </p>
 
+<h2 class="text-2xl font-semibold mb-3 text-gray-800 **bg-red-500**"> Рккк</h2>
+<p class="text-yellow-500">Tailwind работает!</p>
+<p style="color: gold;">Tailwind не нужен, просто проверка</p>
+
+
   <div class="space-y-4">
     <!-- 🔹 Ссылка на авторов -->
     <a href="{{ "authors" | relURL }}" style="display:block; text-decoration: underline; color: blue; margin-bottom: 10px;">
@@ -20,9 +25,23 @@
         Нәшриятләр
     </a>
 
-      <a href="{{ "language" | relURL }}" style="display:block; text-decoration: underline; color: blue; margin-bottom: 10px;">
-        Имләләр
-    </a>
+{{ partial "taxonomy_list.html" (dict 
+  "Title" "Нәшриятләр"
+  "Type" "publisher"
+  "Taxonomy" .Site.Taxonomies.publisher
+) }}
+
+
+
+{{ partial "taxonomy_list.html" (dict 
+  "Title" "Имләләр"
+  "Type" "language"
+  "Taxonomy" .Site.Taxonomies.language
+) }}
+
+
+
+
   </div>
 </div>
 {{ end }}

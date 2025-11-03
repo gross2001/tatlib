@@ -1,0 +1,29 @@
+<section style="padding: 20px 40px; margin: 40px 0;">
+  <h2 style="font-size: 1.5em; font-weight: 600; margin-bottom: 10px; color: #333;">
+    {{ .Title }}
+  </h2>
+
+  <div style="
+      display: grid;
+      grid-template-columns: repeat(2, minmax(250px, 1fr));
+      gap: 16px 40px;
+  ">
+    {{ $type := .Type }}
+    {{ range $term, $taxonomy := .Taxonomy }}
+      {{ if ge (len $taxonomy.Pages) 15 }}
+        <div style="display: flex; align-items: flex-start; gap: 8px;">
+          <span style="color: #d4a017; margin-top: 2px;">📁</span>
+          <div>
+            <a href="{{ (site.GetPage (printf "/%s/%s" $type $term)).RelPermalink }}"
+               style="color: #1a56db; text-decoration: none;"
+               onmouseover="this.style.textDecoration='underline'"
+               onmouseout="this.style.textDecoration='none'">
+              {{ $term }}
+            </a>
+            <sup style="font-size: 0.7em; color: #777; margin-left: 4px;">{{ len $taxonomy.Pages }}</sup>
+          </div>
+        </div>
+      {{ end }}
+    {{ end }}
+  </div>
+</section>
