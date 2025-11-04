@@ -1,6 +1,8 @@
 {{ define "main" }}
 <div class="container my-8">
 
+{{ partial "search.html" . }}
+
   <div class="space-y-4">
 
 {{ partial "taxonomy_list.html" (dict 
@@ -26,6 +28,13 @@
   "Type" "language"
   "Taxonomy" .Site.Taxonomies.language
 ) }}
+
+{{ partial "taxonomy_list.html" (dict 
+  "Title" "Бастыру елы"
+  "Type" "publish_decade"
+  "Taxonomy" .Site.Taxonomies.publish_decade
+) }}
+
 
   </div>
 </div>

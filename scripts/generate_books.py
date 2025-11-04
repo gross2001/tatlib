@@ -14,6 +14,15 @@ OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 # Ограничение на кол-во записей
 LIMIT = 10
 
+def decade_from_year(year_str: str) -> str:
+        """Преобразует 1984 → '1980', 2003 → '2000'"""
+        match = re.match(r"(\d{4})", year_str or "")
+        if not match:
+            return ""
+        year = int(match.group(1))
+        decade = (year // 10) * 10
+        return str(decade)
+
 with CSV_PATH.open(encoding="utf-8") as f:
     reader = csv.DictReader(f)
 
@@ -39,13 +48,18 @@ with CSV_PATH.open(encoding="utf-8") as f:
         genres_raw = row.get("genre", "")
         genres = [g.strip() for g in genres_raw.split(",") if g.strip()]
 
+        # Определяем десятилетие
+        publish_date = row.get("publish_date", "").strip()
+        publish_decade = decade_from_year(publish_date)
+
         # Формируем front matter
         front_matter_dict = {
             "title": title,
             "authors": row.get("author", "").strip()[:50],
             "publisher": row.get("publisher", "").strip()[:50],
             "isbn": row.get("isbn", "").strip(),
-            "publish_date": row.get("publish_date", "").strip(),
+            "publish_date": publish_date,
+            "publish_decade": publish_decade,
             "genres": genres, 
             "page_count": row.get("page_count", "").strip(),
             "download_link": row.get("ya_public_url", "").strip(),
@@ -59,3 +73,5 @@ with CSV_PATH.open(encoding="utf-8") as f:
         md_path.write_text(front_matter, encoding="utf-8")
 
 print(f"✅ Сгенерировано {i} файлов в {OUTPUT_DIR}")
+
+

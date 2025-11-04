@@ -1,0 +1,23 @@
+<section id="search" style="padding: 20px 40px; margin: 40px 0;">
+
+  <link href="{{ "pagefind/pagefind-ui.css" | relURL }}" rel="stylesheet">
+<script src="{{ "pagefind/pagefind-ui.js" | relURL }}"></script>
+
+<div id="search" class="my-6"></div>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    new PagefindUI({
+      element: "#search",
+      showSubResults: true,
+      autofocus: true,
+      translations: {
+        placeholder: "Эзләү...",
+        zero_results: "Нәтиҗә табылмады",
+        load_more: "Тагын йөкләргә"
+      }
+    });
+  });
+</script>
+
+</section>

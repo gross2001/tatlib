@@ -10,3 +10,4 @@ theme = "ananke"
     genre = 'genres'
     publisher = 'publisher'
     language = 'language'
+    publish_decade = 'publish_decade'
