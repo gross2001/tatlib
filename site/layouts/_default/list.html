@@ -1,0 +1,14 @@
+{{ define "main" }}
+  <main
+    data-pagefind-ignore="all"
+  >
+    <h1>{{ .Title }}</h1>
+    {{ range .Paginator.Pages }}
+      <article>
+        <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+      </article>
+    {{ end }}
+
+    {{ template "_internal/pagination.html" . }}
+  </main>
+{{ end }}
