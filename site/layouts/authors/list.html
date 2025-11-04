@@ -1,15 +1,9 @@
 {{ define "main" }}
-<main>
-    <h1>Авторның китаплары: {{ .Title }}</h1>
-    
+<main>    
     {{ if .Pages }}
-    <ul>
-        {{ range .Pages }}
-        <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
-        {{ end }}
-    </ul>
+        {{ partial "books_list.html" . }}
     {{ else }}
-    <p>Бу авторның китаплары әле өстәлмәгән.</p>
+        <p>Бу авторның китаплары әле өстәлмәгән.</p>
     {{ end }}
 </main>
 {{ end }}

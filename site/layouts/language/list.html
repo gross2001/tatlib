@@ -3,11 +3,7 @@
     <h1>Бу имләдәге китаплар: {{ .Title }}</h1>
     
     {{ if .Pages }}
-    <ul>
-        {{ range .Pages }}
-        <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
-        {{ end }}
-    </ul>
+        {{ partial "books_list.html" . }}
     {{ else }}
     <p>Бу авторның китаплары әле өстәлмәгән.</p>
     {{ end }}

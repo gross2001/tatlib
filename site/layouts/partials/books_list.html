@@ -1,0 +1,34 @@
+{{ range .Pages.ByTitle }}
+<article class="book-entry" style="margin-bottom: 1.5em;">
+    <a href="{{ .Permalink }}"
+       style="
+           font-size: 1.4em;
+           font-weight: 500;
+           color: #111;
+           text-decoration: none;
+           display: inline-block;
+           transition: color 0.2s ease;
+       "
+       onmouseover="this.style.color='#1a56db';"
+       onmouseout="this.style.color='#111';">
+        {{ .Params.authors }}. {{ .Title }}
+    </a>
+    <p style="margin: 0.4em 0;">
+        {{ if .Params.publisher }}{{ .Params.publisher }}{{ end }}
+        
+        {{ if .Params.publish_date }}
+            {{ if or .Params.publisher .Params.publish_date }}, {{ end }}
+            {{ .Params.publish_date }}.
+        {{ end }}
+        
+        {{ if .Params.page_count }}
+            — {{ .Params.page_count }} с.
+        {{ end }}
+        {{ if .Params.Title }}
+            {{ .Params.Title }}
+        {{ else if .Plain }}
+            <p style="margin: 0.4em 0; color: #333;">{{ truncate .Plain 300 "…" }}</p>
+        {{ end }}
+    </p>
+</article>
+{{ end }}
