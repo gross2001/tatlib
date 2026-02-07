@@ -1,0 +1,78 @@
+.search-section {
+  padding: 20px 40px;
+  margin: 40px 0;
+}
+
+.search-widget {
+  margin: 1.5rem 0;
+}
+
+.book-entry {
+  margin-bottom: 1.5em;
+}
+
+.book-entry__link {
+  font-size: 1.4em;
+  font-weight: 500;
+  color: #111;
+  text-decoration: none;
+  display: inline-block;
+  transition: color 0.2s ease;
+}
+
+.book-entry__link:hover {
+  color: #1a56db;
+}
+
+.book-entry__meta {
+  margin: 0.4em 0;
+}
+
+.book-entry__summary {
+  margin: 0.4em 0;
+  color: #333;
+}
+
+.taxonomy-section {
+  padding: 10px 30px;
+  margin: 10px 0;
+}
+
+.taxonomy-section__title {
+  font-size: 1.5em;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.taxonomy-section__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(250px, 1fr));
+  gap: 4px 40px;
+}
+
+.taxonomy-section__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.taxonomy-section__icon {
+  color: #d4a017;
+  margin-top: 2px;
+}
+
+.taxonomy-section__link {
+  color: #1a56db;
+  text-decoration: none;
+}
+
+.taxonomy-section__link:hover {
+  text-decoration: underline;
+}
+
+.taxonomy-section__count {
+  font-size: 0.7em;
+  color: #777;
+  margin-left: 4px;
+}
