@@ -24,11 +24,9 @@
         {{ if .Params.page_count }}
             — {{ .Params.page_count }} с.
         {{ end }}
-        {{ if .Params.Title }}
-            {{ .Params.Title }}
-        {{ else if .Plain }}
-            <p style="margin: 0.4em 0; color: #333;">{{ truncate .Plain 300 "…" }}</p>
-        {{ end }}
     </p>
+    {{ if .Plain }}
+        <p style="margin: 0.4em 0; color: #333;">{{ truncate .Plain 300 "…" }}</p>
+    {{ end }}
 </article>
 {{ end }}
